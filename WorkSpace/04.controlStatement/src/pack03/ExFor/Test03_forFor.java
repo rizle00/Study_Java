@@ -10,5 +10,17 @@ public static void main(String[] args) {
 			System.out.print(" "); }//어떻게 하면 내가 원하는 만큼 true를 만들까
 		System.out.println();
 	}
+
+	 for(int a=6; a>1; a--) {
+		 for(int b=1; b<a; b++) {
+			 System.out.print(" ");
+		
+		 }for(int c=7; c>a;c-- ) {
+		 System.out.print("*");
+	 }System.out.println();
+	 
+		 } 
+	 
+
 }
 }
