@@ -24,7 +24,16 @@ public static void main(String[] args) {
 			}
 		}
 	
-	
+	int [] arrNum = {1, 2, 3, 4, 6, 7, 0};
+	int sum = 45;
+	for (int i=0; i<10; i++) {
+		for(int j=0; j<arrNum.length; j++ ) {
+			if(i==arrNum[j]) {
+				sum-=i;
+				System.out.print(i+",");
+			}
+		}
+	}System.out.println(sum);
 	
 }
 }
