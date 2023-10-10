@@ -1,4 +1,4 @@
-package pack06.gmae;
+package pack06.game;
 
 import java.util.Random;
 import java.util.Scanner;
