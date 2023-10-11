@@ -9,5 +9,8 @@ public static void main(String[] args) {
 	member.iField = 1;
 	System.out.println(member.iField);
 	member.iMethod();
+	member.iMethod(12);
+	member.iMethod("A");
+	member.iMethod("S", 2);
 }
 }

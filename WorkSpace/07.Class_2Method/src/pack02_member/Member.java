@@ -1,6 +1,14 @@
 package pack02_member;
 
 public class Member {
+	
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
+	public Member(int data) {
+		// TODO Auto-generated constructor stub
+	}
+	
 	// 메소드 큐칙  : void 여부
 	// void 인 경우 변수에 담거나 메소드 내부에 있는 값을 호출한 곳에서 받을 수 없음
 	// void 가 아닌 경우 반드시 해당하는 타입을 반환 해줘야 함.
@@ -19,11 +27,28 @@ public class Member {
 		// 인스턴스화 x
 		// 접근 방식 -> Class.
 		// static 인 경우 인스턴스에 접근 불가. 메모리 on off 를 생각할 것.
+	
+	//메소드 이름이 중복되면 코드 오류.
+	// 메소드 오버로딩 : 같은 이름의 메소드를 파라미터 타입 또는 개수를 달리해서
+	// 중복시켜서 사용하는 방식
 		int iField;
 		static int sField;
 		public void iMethod() {
 			System.out.println(iField+"인스턴스 메소드"+sField);
 		}
+		
+		public void iMethod(int param) {
+			System.out.println("파라미터 1개");		
+		}
+		
+		public void iMethod(String param) {
+			System.out.println("String");
+		}
+		
+		public void iMethod(String param , int param1) {
+			System.out.println("para 2");
+		}
+		
 		public static void sMethod() {
 			Member member = new Member();
 			System.out.println(member.iField+"스태틱 메소드");
