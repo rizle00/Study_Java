@@ -16,7 +16,7 @@ public static void main(String[] args) {
 	while(true) {
 		System.out.println("while실행중");
 		if(i==999) {
-			break; System.out.println(i);
+		
 		} i++;
 	}
 }

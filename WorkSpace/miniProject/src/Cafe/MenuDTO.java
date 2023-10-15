@@ -4,13 +4,14 @@ public class MenuDTO {
 	
 	private String name;
 	
-	private int money, refund, num, price;
+	private int money, refund, price;
+	
 	
 			
-	public MenuDTO( int num, String name, int price) {
+	public MenuDTO(String name, int price) {
 		super();
 		this.name = name;
-		this.num = num;
+//		this.num = num; 인덱스 넘버로 처리
 		this.price = price;
 	}
 
@@ -37,12 +38,12 @@ public class MenuDTO {
 	public void setRefund(int refund) {
 		this.refund = refund;
 	}
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
+//	public int getNum() {
+//		return num;
+//	}
+//	public void setNum(int num) {
+//		this.num = num;
+//	}
 	public int getPrice() {
 		return price;
 	}
