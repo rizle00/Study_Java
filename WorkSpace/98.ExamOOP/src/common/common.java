@@ -5,10 +5,10 @@ import java.util.Scanner;
 import member.memberDTO;
 import product.ProductDTO;
 
-public class common {
+public class common { // 공통으로 쓸 도구들
 	private Scanner scan; //접근제한자
 	private memberDTO loginInfo; // 로그인 성공 시 배열(DAO)에 있는 정보 중 하나의 데이터를 저장해둠
-	public ProductDTO [] items;
+	public ProductDTO [] items;// 초기화 = 사용준비
 	
 	//1.숫자 형태를 입력받아야할때
 	// 1.1 +메세지

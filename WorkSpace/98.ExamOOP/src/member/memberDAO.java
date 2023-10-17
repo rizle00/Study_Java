@@ -5,7 +5,7 @@ import product.ProductDAO;
 
 public class memberDAO {
 	common common; //초기화
-	ProductDAO dao;
+	ProductDAO dao; //  초기화
 
 		public memberDAO(common common) { //생성자
 			this.common = common;
