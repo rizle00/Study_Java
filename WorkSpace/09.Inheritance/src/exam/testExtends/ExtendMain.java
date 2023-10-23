@@ -8,6 +8,8 @@ public class ExtendMain {
 		System.out.println(par.getParent_field3());// private 접근 제한, getter setter 필요
 		par.parentMethod();
 		
+		
+		
 		Child_Class child = new Child_Class();
 		System.out.println(child.child_field);
 		System.out.println(child.parent_field1);
