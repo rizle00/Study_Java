@@ -1,8 +1,12 @@
 package pack02.testInterface;
 
 public class ProductDAO implements ProductInterface{
-
-	
+	public ProductDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	public ProductDAO(int a, String c) {
+		// TODO Auto-generated constructor stub
+	}
 	// 상품 정보 5건을 담아  return하는 메소드 완성하기
 	@Override
 	public ProductDTO[] innitDtos() {

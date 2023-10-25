@@ -3,7 +3,10 @@ package pack02.testInterface;
 public class ProductMain {
 public static void main(String[] args) {
 //	ProductDTO dto = new ProductDTO();
+	ProductDTO dto;
+	dto = new ProductDTO();
 	ProductDAO dao = new ProductDAO();
+	
 //	ProductDTO [] dtos = dao.innitDtos();
 //	dao.disply(dtos);
 	
