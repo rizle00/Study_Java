@@ -29,7 +29,8 @@ public class KymNested {
 			}
 		}
 	} public static void main(String[] args) {
-		pack01.Nested.KymNested.Kym1.Test.Test_Sub test = new KymNested.Kym1().new Test().new Test_Sub();
+		pack01.Nested.KymNested.Kym1.Test.Test_Sub test 
+		= new KymNested.Kym1().new Test().new Test_Sub();
 		System.out.println(test.test);
 		test.method();
 	}

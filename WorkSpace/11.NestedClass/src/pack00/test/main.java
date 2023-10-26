@@ -16,7 +16,7 @@ public static void main(String[] args) {
 	System.out.println(test.str);
 	CD5 cd = test.new CD4().new CD5();
 	
-	static final int  
+
 	
 }
 }
