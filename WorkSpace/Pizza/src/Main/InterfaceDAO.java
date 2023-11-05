@@ -1,11 +1,39 @@
 package Main;
 
-public interface InterfaceDAO {
-	
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class InterfaceDAO {
+//	 Connection conn; // 연결 객체
+//	PreparedStatement ps; // 실행 객체
+//	ResultSet rs ; //결과 객체(표 sql dev 밑에 질의결과)
+	public static class connector{
+		static Connection conn;// 상속했는데 스태틱이 필요함?
+		protected static void connect() {
+			String url = "jdbc:oracle:thin:@118.40.91.135:1521:xe";
+			String user = "ATEAM";
+			String password = "ATEAM1";
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement ps = conn.prepareStatement("");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}// db 접속
+		protected void disconnect() {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}// db 접속 해제
+		
+	}
 	public interface main{
 		public void select();//로그인, 종료 선택 + 시작화면임을 표시필요
-		public static void connect() { 	};// db 접속
-		public static void disconnect() { };// db 접속 해제
 		public int selectMode();// 로그인 후 모드 선택,로그아웃, 점수출력, 레시피추가, 게임시작 
 		public void rogout();// 로그아웃
 		public void printScore();// db에있는 점수 정보 출력 , 등수, 계급, 점수, 닉네임
@@ -21,6 +49,8 @@ public interface InterfaceDAO {
 	public interface aboutRecipe{
 		public void printRecipe();// 있는 레시피 출력
 		public void addRecipe();// 중복 예외 처리 필요, db에서 기본키지정
+		public void modifyRecipe();// 레시피 수정
+		public void deleteRecipe();// 레시피 삭제
 		public void inputData();// 레시피 db에서 불러와서 인덱스에 점수 입력 처리
 		
 	}
