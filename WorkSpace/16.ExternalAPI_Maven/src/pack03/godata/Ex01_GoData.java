@@ -70,6 +70,8 @@ public class Ex01_GoData {
 			String pojoJson = new Gson().toJson(pojo);
 			System.out.println(pojoJson);
 			
+			//Jsoup => Html Parser 내부에있는 태그를 식별해서 짜르기 가능
+			
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (ClientProtocolException e) {
