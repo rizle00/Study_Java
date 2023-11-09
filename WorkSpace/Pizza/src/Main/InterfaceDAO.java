@@ -58,7 +58,7 @@ public class InterfaceDAO {
 	public interface aboutPlay{
 		public void startGame();// 게임 시작
 		public int selectLevel();// 난이도 선택 상 중 하+ 최상?
-		public void printRandomRecipe();// 배열중 랜덤하게 레시피 출력,(=문제출제) 화면 올려버리기 필요
+		public void printRandomRecipe();// 배열중 랜덤하게, 순서 섞어서 레시피 출력, 두개로 나눌수도?,(=문제출제) 화면 올려버리기 필요
 		public void userInput();// 입력값받기
 		public boolean checkAnswer();// 정답체크
 		public void printCorrect();//맞을때 점수 누적 및 출력사항
