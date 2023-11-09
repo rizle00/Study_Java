@@ -325,6 +325,17 @@ public class DAO extends Common{
 		}
 	}
 	
+	public boolean checkCook(String inputStr) {
+		for (int i = 0; i < cDtos.size() - 1; i++) {
+			if (cDtos.get(i).getCookName().equals(inputStr)) {
+				System.out.println("---------------------------------------------------------");
+				System.out.println("중복된 레시피 이름입니다.");
+				System.out.println("다른 이름을 입력해주세요.");
+				return true;
+			} 
+		}return false;
+	}
+	
 	public int addCook() {
 		String cookName = null;
 		int count = 0;
@@ -334,16 +345,9 @@ public class DAO extends Common{
 			System.out.println("레시피를 추가합니다");
 			System.out.println("추가하실 레시피 이름을 입력해주세요.");
 			cookName = userInput();
-			for (int i = 0; i < cDtos.size() - 1; i++) {
-				if (cDtos.get(i).getCookName().equals(cookName)) {
-					System.out.println("---------------------------------------------------------");
-					System.out.println("중복된 레시피 이름입니다.");
-					System.out.println("다른 레시피 이름을 입력해주세요.");
-					cookName = null;
-					break;
-				} 
-			}
-			if (cookName == null) {
+			
+			boolean isExistedCook = checkCook(cookName);
+			if (isExistedCook) {
 				continue;
 			}
 			
@@ -415,9 +419,8 @@ public class DAO extends Common{
 		String select2 =null;// 음식이냐 재료냐2
 		String inputStr =null;
 		String select3 =null;// 음식번호냐 재료번호냐
-		String select4 =null;// 음식번호냐 재료번호냐
 		int inputNum =0 ;
-		while(mDto.isLogin()) {
+		point : while(mDto.isLogin()) {
 			printCooks();
 			System.out.println("---------------------------------------------------------");
 			 System.out.println("수정할 음식의 번호를 입력하세요, 0 - 이전화면으로");
@@ -425,30 +428,24 @@ public class DAO extends Common{
 			 if(inputNum ==0) {
 				 break;
 			 }
-		
-			System.out.println("1 - 음식 이름 수정 / 2 - 음식 재료 수정 ");
+			 boolean isExistedCook = false;
+				
+			 while(!isExistedCook) {
+			System.out.println("1 - 음식 이름 수정 / 2 - 음식 재료 수정 / 3 - 이전화면으로");
 			int choice = userNum();
 			switch(choice) {
 			 case 1:
 				 System.out.println("---------------------------------------------------------");
 				 System.out.println("수정할 이름을 입력하세요");
 				 inputStr = userInput();
+				  isExistedCook = checkCook(inputStr);
+					if (isExistedCook) {
+						continue;
+					}
 				select = "cook_info";
 				select2 = "cook_name";
-				select3 = "cook_no";
-				select4 = "";
-				cDtos.add(new CookDTO("temp"));
-				for (int i = 0; i < cDtos.get(inputNum-1).recipeList.size()-1; i++) {
-					cDtos.get(cDtos.size()-1).recipeList.add(i, new RecipeDTO(i, cDtos.get(inputNum-1).getCookNum(), 
-							cDtos.get(inputNum-1).recipeList.get(i).getIngredient()));
-				}
-				cDtos.set(inputNum-1, new CookDTO(inputStr, cDtos.get(inputNum-1).getCreatedBy(), cDtos.get(inputNum-1).getCookNum(),
-						cDtos.get(inputNum-1).getCount(), cDtos.get(inputNum-1).getScore()));
-				for (int i = 0; i < cDtos.get(inputNum-1).recipeList.size()-1; i++) {
-					cDtos.get(inputNum-1).recipeList.add(i, new RecipeDTO(i, cDtos.get(inputNum-1).getCookNum(), 
-							cDtos.get(cDtos.size()-1).recipeList.get(i).getIngredient()));
-				}
-				cDtos.remove(cDtos.size()-1);
+				select3 = "";
+				cDtos.get(inputNum-1).setCookName(inputStr);
 				break;
 			 case 2 :
 				 System.out.println("---------------------------------------------------------");
@@ -456,33 +453,31 @@ public class DAO extends Common{
 				 int inputNum1 = userNum();
 				 select = "RECIPE_INFO";
 				 select2 = "INGREDIENT";
-				 select3 = "Cook_NO";
-				 select4 = "and recipe_no = "+inputNum;
+				 select3 = "and recipe_no = "+inputNum;
 				 System.out.println("---------------------------------------------------------");
 				 System.out.println("수정할 재료를 입력하세요");
 				 inputStr = userInput();
-				 cDtos.get(inputNum-1).recipeList.set(inputNum1-1, new RecipeDTO(inputNum1-1, cDtos.get(inputNum-1).getCookNum(), inputStr));
+				 cDtos.get(inputNum-1).recipeList.get(inputNum1-1).setIngredient(inputStr);
 				 break;
 				 
+			 case 3:
+				 break point;
 			default :
 				System.out.println("---------------------------------------------------------");
 				System.out.println("잘못된 입력입니다");
 				
 			}
 			try (PreparedStatement ps = conn
-					.prepareStatement("update "+ select + " set "+ select2 +" = ? where "+ select3 +" = ? "+select4)) {
-//				ps.setString(1, select);
-//				ps.setString(2, select2);
+					.prepareStatement("update "+ select + " set "+ select2 +" = ? where Cook_no = ? "+select3)) {
 				ps.setString(1, inputStr);
-//				ps.setString(4, select3);
 				 int cookNum =cDtos.get(inputNum-1).getCookNum();
 				 inputNum = cookNum;
 				ps.setInt(2, inputNum);
 				ps.executeUpdate();
-				
 				System.out.println("수정 되었습니다");
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}
 			}
 		}
 		
