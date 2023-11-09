@@ -84,6 +84,15 @@ public class InterfaceDAO {
 //		public void printCorrect();//맞을때 점수 누적 및 출력사항
 //		public boolean printInCorrect();// 틀렸음을 알림, 3번 중 몇번째 틀렸는지 3번 틀리면 사망
 //		public int minusScore();// 틀릴때마다 획득 점수 감소
+	public interface aboutPlay{
+		public void startGame();// 게임 시작
+		public int selectLevel();// 난이도 선택 상 중 하+ 최상?
+		public void printRandomRecipe();// 배열중 랜덤하게, 순서 섞어서 레시피 출력, 두개로 나눌수도?,(=문제출제) 화면 올려버리기 필요
+		public void userInput();// 입력값받기
+		public boolean checkAnswer();// 정답체크
+		public void printCorrect();//맞을때 점수 누적 및 출력사항
+		public boolean printInCorrect();// 틀렸음을 알림, 3번 중 몇번째 틀렸는지 3번 틀리면 사망
+		public int minusScore();// 틀릴때마다 획득 점수 감소
 		public void printRemain();//3번까지 틀린경우, 목숨 잃음 알림, 남은목숨 알림, 누적점수 알림
 		public void updateScore(String id, int score);// 접속, 누적점수 업데이트, 해제
 		public void gameEnd(int chance);// 게임종료 알림, 점수 출력, 다시 셀렉트모드로

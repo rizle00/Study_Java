@@ -2,12 +2,13 @@ package Main;
 
 public class DTO {
 
-	public class memberDTO{
-		private String id, pw, nickName, gender, birthday, generatedDay, address;
-	}
-	
-	public class recipeDTO{
-		private String name;
-	}
+	private String id, pw, nickName, gender, birthday, createdDay, address;
+//	public class memberDTO{
+//		
+//	}
+//	
+//	public class recipeDTO{ DAO에서 배열 생성
+//		private String name;
+//	}
 	
 }
